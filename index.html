@@ -139,6 +139,86 @@ body {
     outline: none;
     text-decoration: none;
 }
+/* =======================
+   MOBILE RESPONSIVE FIXES
+   ======================= */
+@media (max-width: 768px) {
+
+    body {
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    #calendar-card {
+        padding: 14px;
+        border-radius: 14px;
+    }
+
+    /* Auditorium name */
+    .header input {
+        font-size: 22px;
+    }
+
+    /* Controls stack */
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .controls > div {
+        display: flex;
+        justify-content: space-between;
+        gap: 6px;
+    }
+
+    .controls button,
+    .controls input {
+        font-size: 14px;
+        padding: 8px 10px;
+        flex: 1;
+    }
+
+    /* Month title */
+    #monthYear {
+        font-size: 18px;
+    }
+
+    /* Calendar tighter */
+    .calendar {
+        gap: 6px;
+        padding: 6px;
+    }
+
+    .day-name {
+        font-size: 12px;
+    }
+
+    .day {
+        height: 55px;
+        font-size: 14px;
+        border-radius: 10px;
+    }
+
+    .booked::after {
+        font-size: 9px;
+        bottom: 4px;
+    }
+
+    /* Footer buttons */
+    .footer {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .footer a,
+    .footer input {
+        width: 100%;
+        text-align: center;
+        font-size: 14px;
+    }
+}
+
 </style>
 </head>
 
