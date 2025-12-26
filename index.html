@@ -94,7 +94,8 @@ body {
     height: 80px;
     border: 1px solid rgba(255,255,255,0.25);
     border-radius: 14px;
-    background: rgba(255,255,255,0.2);
+
+     background: rgba(80, 255, 240, 0.12);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -109,7 +110,7 @@ body {
 }
 
 .booked {
-   background: rgba(80, 255, 240, 0.12);
+      background: rgba(255,255,255,0.2);
 
 }
 
@@ -232,16 +233,16 @@ body {
 
     <div class="controls">
         <div>
-            <button onclick="changeMonth(-1)">◀</button>
-            <button onclick="changeMonth(1)">▶</button>
+            <button class="no-export" onclick="changeMonth(-1)">◀</button>
+            <button class="no-export" onclick="changeMonth(1)">▶</button>
         </div>
 
-        <input type="file" accept="image/*" onchange="setBackground(event)">
+        <input class="no-export" type="file" accept="image/*" onchange="setBackground(event)">
 
         <div>
-            <button onclick="downloadImage()">Download</button>
-            <button onclick="savePreset()">Save</button>
-            <button onclick="loadPreset()">Load</button>
+            <button class="no-export" onclick="downloadImage()">Download</button>
+            <button class="no-export" onclick="savePreset()">Save</button>
+            <button class="no-export" onclick="loadPreset()">Load</button>
         </div>
     </div>
 
@@ -369,13 +370,18 @@ function loadPreset(silent = false) {
 
 /* -------- DOWNLOAD -------- */
 function downloadImage() {
-    html2canvas(document.getElementById("calendar-card")).then(canvas => {
+    html2canvas(document.getElementById("calendar-card"), {
+        ignoreElements: (element) => {
+            return element.classList.contains("no-export");
+        }
+    }).then(canvas => {
         const a = document.createElement("a");
-        a.href = canvas.toDataURL();
-        a.download = "calendar.png";
+        a.href = canvas.toDataURL("image/png");
+        a.download = "calendar-poster.png";
         a.click();
     });
 }
+
 </script>
 
 
